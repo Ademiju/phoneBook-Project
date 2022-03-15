@@ -2,7 +2,7 @@ package africa.semicolon.phoneBook.services;
 
 import africa.semicolon.phoneBook.data.models.Contact;
 import africa.semicolon.phoneBook.data.repositories.ContactRepository;
-//import africa.semicolon.phoneBook.data.repositories.ContactRepositoryImpl;
+import africa.semicolon.phoneBook.data.repositories.ContactRepositoryImpl;
 import africa.semicolon.phoneBook.dtos.requests.AddContactRequest;
 import africa.semicolon.phoneBook.dtos.responses.AddContactResponse;
 import africa.semicolon.phoneBook.dtos.responses.FindContactResponse;
@@ -11,11 +11,9 @@ import africa.semicolon.phoneBook.exceptions.ContactDoesNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
 public class ContactServiceImpl implements ContactService {
-//    ContactRepository database = new ContactRepositoryImpl();
-    @Autowired
-    ContactRepository database;
+   ContactRepository database = new ContactRepositoryImpl();
+   
     @Override
     public AddContactResponse addContact(AddContactRequest addContactRequest) {
         if (phoneNumberExist(addContactRequest.getPhoneNumber()))
